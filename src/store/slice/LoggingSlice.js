@@ -10,7 +10,6 @@ const loggingSlice = createSlice({
             state.isloggedin = true;
         },
         logout(state) {
-            console.log('ds')
             localStorage.removeItem("userId");
             state.isloggedin = false;
         }

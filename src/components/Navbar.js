@@ -9,7 +9,6 @@ const Navbar = () => {
     const disp = useDispatch()
     const state = useSelector((state) => state.logging)
     const logoutuser = () => {
-        console.log("asd")
         disp(logout())
         nav("/")
     }
