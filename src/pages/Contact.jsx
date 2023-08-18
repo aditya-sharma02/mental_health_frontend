@@ -52,7 +52,7 @@ const Contact = () => {
             alert("thank You message sent")
             setuserdata((preval) => {
                 return {
-                    ...preval,[message]:""
+                    ...preval,message:""
                 }
             })
         }
