@@ -36,7 +36,7 @@ const Contact = () => {
     }
     const submit = async (e) => {
         e.preventDefault()
-        let res = await fetch("http://localhost:5000/message", {
+        let res = await fetch("https://mental-health-project.onrender.com/message", {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
