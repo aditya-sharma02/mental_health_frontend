@@ -33,7 +33,7 @@ const SignUp = () => {
             alert("password and Confirm password not matched")
         }
         else {
-            let res = await fetch(" http://localhost:5000/signup", {
+            let res = await fetch(" https://mental-health-project.onrender.com/signup", {
                 method: "post",
                 headers: {
                     "Content-Type": "application/json"

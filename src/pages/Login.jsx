@@ -29,7 +29,7 @@ const Login = () => {
             alert("Enter password")
         }
         else {
-            let res = await fetch(" http://localhost:5000/login", {
+            let res = await fetch(" https://mental-health-project.onrender.com/login", {
                 method: "post",
                 headers: {
                     "Content-Type": "application/json"

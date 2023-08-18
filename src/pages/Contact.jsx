@@ -14,7 +14,7 @@ const Contact = () => {
     useEffect(() => {
         const fuc = async () => {
             const id = localStorage.getItem("userId");
-            let response = await fetch(`http://localhost:5000/getuser?id=${id}`)
+            let response = await fetch(`https://mental-health-project.onrender.com/getuser?id=${id}`)
             const data = await response.json();
             setuserdata({
                 name: data.user.name,
@@ -48,7 +48,17 @@ const Contact = () => {
             })
         })
         res = await res.json();
-        console.log(res)
+        if (res.status === 200) {
+            alert("thank You message sent")
+            setuserdata((preval) => {
+                return {
+                    ...preval,[message]:""
+                }
+            })
+        }
+        else if (res.status ===500) {
+            alert("Sorry cannot send message")
+        }
     }
     return (
         <>
