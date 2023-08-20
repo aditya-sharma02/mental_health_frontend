@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../store/slice/LoggingSlice";
+import Loader from "../components/Loader";
 
 const SignUp = () => {
-    const disp = useDispatch()
-    const state = useSelector((state) => state.logging)
-    
+    const [load, setload] = useState(false)
+
     const nav = useNavigate()
     const [data, setdata] = useState({
         name: "",
@@ -33,6 +31,7 @@ const SignUp = () => {
             alert("password and Confirm password not matched")
         }
         else {
+            setload(true)
             let res = await fetch(" https://mental-health-project.onrender.com/signup", {
                 method: "post",
                 headers: {
@@ -46,8 +45,8 @@ const SignUp = () => {
                     gender: data.gender
                 })
             })
-            const response = await res.json()
-
+            const response = await res.json();
+            setload(false);
             if (response.status === 201) {
                 alert("sign up Succesfull ")
                 setdata({
@@ -62,8 +61,15 @@ const SignUp = () => {
             else if (response.status === 409) {
                 alert("User already registered")
             }
-            
+
         }
+    }
+    if (load) {
+        return (
+            <>
+                <Loader/>
+            </>
+        )
     }
     return (
         <>
