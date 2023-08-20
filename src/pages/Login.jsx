@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../store/slice/LoggingSlice";
 import { useNavigate } from "react-router-dom";
 import { RiAccountCircleFill } from "react-icons/ri"
+import { BallTriangle } from 'react-loader-spinner'
 
 const Login = () => {
+    const [load, setload] = useState(false)
     const nav = useNavigate()
     const dispatch = useDispatch();
     const [data, setdata] = useState({
@@ -19,7 +21,7 @@ const Login = () => {
             return { ...preval, [e.target.name]: e.target.value }
         })
     }
-    
+
     const submit = async (e) => {
         e.preventDefault();
         if (!data.email) {
@@ -29,6 +31,7 @@ const Login = () => {
             alert("Enter password")
         }
         else {
+            setload(true)
             let res = await fetch(" https://mental-health-project.onrender.com/login", {
                 method: "post",
                 headers: {
@@ -41,6 +44,7 @@ const Login = () => {
             })
             const response = await res.json()
             // console.log(response.isuser._id)
+            setload(false)
             if (response.status === 200) {
                 localStorage.setItem("userId", response.isuser._id)
                 dispatch(login());
@@ -53,11 +57,30 @@ const Login = () => {
             else if (response.status === 401) {
                 alert("invalid credentials")
             }
-            
+
         }
     }
 
-
+    if (load) {
+        return (
+            <>
+                <div className="w-screen h-screen flex justify-center items-center">
+                    <div>
+                        <BallTriangle
+                            height={100}
+                            width={100}
+                            radius={5}
+                            color="black"
+                            ariaLabel="ball-triangle-loading"
+                            wrapperClass={{}}
+                            wrapperStyle=""
+                            visible={true}
+                        />
+                    </div>
+                </div>
+            </>
+        )
+    }
 
     return (
         <>
