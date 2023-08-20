@@ -3,13 +3,13 @@ import React from "react";
 const Footer = () => {
     return (
         <>
-            <div className="flex flex-wrap justify-around w-screen truncate bg-black h-72 sm:h-auto">
+            <div className="flex flex-wrap justify-around w-screen truncate bg-black h-72 sm:h-auto md:h-auto">
                 <div className="w-[30%] h-auto sm:w-[100%]">
                     <img src="/lb.png" />
                 </div>
-                <div className="flex-col justify-around w-[50%] h-full sm:w-[100%]" >
-                    <div className="flex justify-around w-[100%] h-52">
-                        <div className="w-[40%] pt-5 text-white">
+                <div className="flex-col flex-wrap justify-around w-[50%] h-full sm:w-[100%] sm:h-auto md:w-[100%] md:h-auto" >
+                    <div className="flex flex-wrap justify-around w-[100%] h-52 sm:w-[100%] sm:h-auto md:w-[100%] md:h-auto">
+                        <div className="w-[40%] pt-5 text-white sm:w-[100%] sm:pt-0 sm:pl-5 sm:pr-5 md:w-[100%] md:pt-0 md:pl-5 md:pr-5">
                             <div className="text-xl pb-2 rounded-lg text-center border-b-2 border-white">Also Check Out</div>
                             <div className="pt-3 tracking-wide ">
                                 <a className="hover:text-xl transition-all" href="/blogs">Articles</a><br />
@@ -17,7 +17,7 @@ const Footer = () => {
                                 <a className="hover:text-xl transition-all" href="/test">Test mental health</a>
                             </div>
                         </div>
-                        <div className="w-[40%] pl-5 pt-5 text-white">
+                        <div className="w-[40%] pl-5 pt-5 text-white sm:w-[100%] sm:pr-5 sm:pb-5 md:w-[100%] md:pr-5 md:pb-5">
                             <div className="text-xl pb-2 rounded-lg text-center border-b-2 border-white">Contact Various Ngo's</div>
                             <div className="pt-3 tracking-wide">
                                 <div>+91-9922001122</div>

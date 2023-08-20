@@ -21,8 +21,8 @@ const Navbar = () => {
                 top: "0",
                 width: "100%"
             }} className="z-[100] flex flex-wrap center w-screen justify-between backdrop-filter backdrop-blur-lg">
-                <img src="lw.png" className="w-80 ml-8 mt-3  sm:w-[80%]" />
-                <div className="flex  w-[50%] text-stone-500 justify-around items-center text-2xl sm:w-[100%]  sm:justify-between sm:text-sm ">
+                <img src="lw.png" className="w-80 ml-8 mt-3  sm:w-[80%] md:w-[80%]" />
+                <div className="flex  w-[50%] text-stone-500 justify-around items-center text-2xl sm:w-[100%]  sm:justify-between sm:text-sm md:w-[100%] md:justify-around md:text-md ">
                     <div className="hover:text-stone-950 ">
                         <NavLink to='/'>Home</NavLink>
                     </div>
