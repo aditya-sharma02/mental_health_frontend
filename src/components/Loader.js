@@ -4,7 +4,7 @@ import { BallTriangle } from "react-loader-spinner";
 const Loader = () => {
     return (
         <>
-            <div className="w-screen h-screen flex justify-center items-center">
+            {/* <div className="w-screen h-screen flex justify-center items-center"> */}
                 <div>
                     <BallTriangle
                         height={100}
@@ -17,7 +17,7 @@ const Loader = () => {
                         visible={true}
                     />
                 </div>
-            </div>
+            {/* </div> */}
         </>
     )
 }

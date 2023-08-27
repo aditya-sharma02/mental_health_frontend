@@ -8,7 +8,6 @@ import { login } from "../store/slice/LoggingSlice";
 
 const Test = () => {
     const [result, setresult] = useState(false);
-    const navi = useNavigate()
     const [selectedAnswers, setSelectedAnswers] = useState({})
     const correctAnswers = {
         1: "no",
@@ -25,7 +24,6 @@ const Test = () => {
         12: "no",
         13: "no",
     }
-    const disp = useDispatch()
     const state = useSelector((state) => state.logging)
     
     const handleAnswerSelection = (questionId, selectedOption) => {
