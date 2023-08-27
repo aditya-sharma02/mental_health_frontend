@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Questions } from "../data";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useNavigate } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
-import { login } from "../store/slice/LoggingSlice";
+import { useSelector } from "react-redux";
+import { MdDone } from "react-icons/md"
 
 const Test = () => {
     const [result, setresult] = useState(false);
     const [selectedAnswers, setSelectedAnswers] = useState({})
+    let [array, setarray] = useState([false, false, false, false, false, false, false, false, false, false, false, false, false]);
     const correctAnswers = {
         1: "no",
         2: "yes",
@@ -25,7 +25,7 @@ const Test = () => {
         13: "no",
     }
     const state = useSelector((state) => state.logging)
-    
+
     const handleAnswerSelection = (questionId, selectedOption) => {
         setSelectedAnswers(prevSelected => ({
             ...prevSelected,
@@ -72,9 +72,9 @@ const Test = () => {
                 <>
                     <Navbar />
                     <div className="w-screen mt-28 h-[46.2vh]">
-                    <div className="w-[60%] m-auto text-xl font-medium">Based on your Score....</div>
+                        <div className="w-[60%] m-auto text-xl font-medium">Based on your Score....</div>
                         <div className="w-[60%] m-auto text-xl">
-                        <div className=" text-yellow-400 pb-7">No Need for Consultation</div>
+                            <div className=" text-yellow-400 pb-7">No Need for Consultation</div>
                             Hey there, you're doing great by taking care of your mental health! Life has its ups and downs, and it's completely okay to have moments when things feel a bit challenging. Remember that your well-being matters, and you're not alone on this journey. By acknowledging your feelings and seeking support when needed, you're already taking positive steps. Keep focusing on self-care, practicing mindfulness, and reaching out to your support network. Every step you take towards maintaining your mental health is a step towards a brighter and more balanced future. You've got this!
                             <br />
                             If you ever find that your mental health concerns increase or persist, consider reaching out to a mental health professional for guidance and support.
@@ -88,9 +88,9 @@ const Test = () => {
                 <>
                     <Navbar />
                     <div className="w-screen mt-28  h-[46.2vh]">
-                    <div className="w-[60%] m-auto text-xl font-medium">Based on your Score....</div>
+                        <div className="w-[60%] m-auto text-xl font-medium">Based on your Score....</div>
                         <div className="w-[60%] m-auto text-xl">
-                        <div className=" text-green-500 pb-7">Excellent !!! you have done it</div>
+                            <div className=" text-green-500 pb-7">Excellent !!! you have done it</div>
                             "Congratulations on prioritizing your mental health and embracing a positive state of mind! Your ability to maintain good mental health reflects your resilience, self-awareness, and dedication to your well-being. Keep nurturing your emotional balance, practicing self-care, and fostering healthy relationships. Your positive outlook and coping strategies are not only beneficial for you but also inspire those around you. Remember, mental health is an ongoing journey, and your commitment to staying mentally healthy will continue to empower you to lead a fulfilling life. Keep shining brightly!"
                             <br />
                             It's important to note that even when someone is in a good mental health state, life can still bring challenges. Building a strong foundation of mental well-being can help individuals navigate those challenges more effectively.
@@ -119,14 +119,33 @@ const Test = () => {
                     return (
                         <div key={id} className="w-[60%] mt-5 m-auto h-auto sm:w-[80%]" >
                             <div className="text-xl mb-3 font-semibold">Question {id + 1}. {que}</div>
-                            <button className="hover:bg-green-400 border-4 pl-4 pr-4 pt-1 pb-1 capitalize" onClick={() => handleAnswerSelection(id + 1, 'yes')}>yes</button>
-                            <button className="hover:bg-green-400 ml-4 border-4 pl-4 pr-4 pt-1 pb-1 capitalize" onClick={() => handleAnswerSelection(id + 1, 'no')}>no</button>
+                            <button
+                                className="hover:bg-green-400 border-4 pl-4 pr-4 pt-1 pb-1 capitalize" onClick={() => {
+                                    array[id] = true;
+                                    handleAnswerSelection(id + 1, 'yes')
+                                }}>
+                                yes
+                            </button>
+                            <button
+                                className="hover:bg-green-400 ml-4 border-4 pl-4 pr-4 pt-1 pb-1 capitalize"
+                                onClick={() => {
+                                    array[id] = true;
+                                    handleAnswerSelection(id + 1, 'no')
+                                }}>
+                                no
+                            </button>
+                            {array[id] &&
+                                <button className="pl-5 text-xl font-bold text-green-700" >
+                                    <MdDone />
+                                </button>}
                         </div>
                     )
                 })}
             </div>
             <div className="w-screen flex justify-center truncate text-xl">
-                <button className=" rounded-lg bg-black text-white border-black mb-5 m-auto h-auto border-4 pl-10 pr-10 pt-3 pb-3" onClick={submit}>Submit</button>
+                <button
+                    className=" rounded-lg bg-black text-white border-black mb-5 m-auto h-auto border-4 pl-10 pr-10 pt-3 pb-3"
+                    onClick={submit}>Submit</button>
             </div>
             <Footer />
         </>
