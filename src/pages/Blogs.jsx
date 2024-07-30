@@ -17,7 +17,7 @@ const Blogs = () => {
             try {
                 const response = await fetch("https://mental-health-project.onrender.com/getblogs")
                 const data = await response.json()
-                // console.log(data.articles)
+                console.log(data.articles)
                 setdata(data.articles)
                 // console.log(data)
                 setloading(false)
